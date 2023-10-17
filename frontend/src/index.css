@@ -8,3 +8,11 @@ body{
   /* background-color: #cccccc; */
   /* Note: Tee tauskakuva vaihtuvaksi sään mukaan */
 }
+
+.Paper{
+  padding: "100px"; height: 100; bgcolor:"black.main"; border:1.5; borderColor: "#9e9e9e";
+}
+
+.fullHeight {
+  height: 100vh; /* 100% näytön korkeudesta */
+}
