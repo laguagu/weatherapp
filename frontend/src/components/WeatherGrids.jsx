@@ -52,7 +52,7 @@ function WeatherGrids() {
               </Grid>
               <Grid item xs={4}>
                 <Paper sx={{ bgcolor: "black.main" }} elevation={2}>
-                  <Typography color="primary">SIUUUUUU</Typography>
+                  <Typography color="primary" align="center">SIUUUUUU</Typography>
                 </Paper>
               </Grid>
             </Grid>
