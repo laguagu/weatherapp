@@ -14,6 +14,9 @@ const theme = createTheme({
         black:{
             main: blackMain
         }
+    },
+    typography: {
+        fontFamily: 'kanit, cursive',
     }
 })
 

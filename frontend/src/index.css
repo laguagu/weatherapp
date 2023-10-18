@@ -1,3 +1,5 @@
+/* font-family: 'Kanit', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap'); 
 
 body{
   background-image: url("./images/cloudit.jpg");
@@ -16,3 +18,4 @@ body{
 .fullHeight {
   height: 100vh; /* 100% näytön korkeudesta */
 }
+
