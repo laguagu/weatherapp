@@ -21,7 +21,7 @@ const theme = createTheme({
 })
 
 const sharedPaperStyle = {
-    padding: "100px", height: 100, bgcolor:"black.main", border:1.5, borderColor: "#9e9e9e"
+    padding: "100px", height: 100, bgcolor:"black.main", border:1.5, borderColor: "#9e9e9e", 
 }
 
 export default theme;

@@ -3,7 +3,7 @@
 
 body{
   /* background-image: url("./images/cloudit.jpg"); */
-  background-size: 100% auto;
+  /* background-size: 100% auto; */
   background: linear-gradient(135deg, #b3ccb3, #3b7e57);
   /* background-size: cover; */
   /* background-repeat: no-repeat;
@@ -16,4 +16,8 @@ body{
 .fullHeight {
   height: 100vh; /* 100% näytön korkeudesta */
 }
-
+html, body {
+  height:100%;
+  margin: 0;
+  padding: 0;
+}

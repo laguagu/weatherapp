@@ -5,19 +5,23 @@ import fetchWeather from "../api/fetchWeather";
 
 function WeatherGrids() {
   const [weather, setWeather] = useState(null);
-
+  const [weatherIcon, setWeatherIcon] = useState("")
+  
   useEffect(() => {
     async function getWeather() {
       const result = await fetchWeather("Helsinki");
+      const icon = result.weather[0].icon
       setWeather(result.name);
+      setWeatherIcon(`https://openweathermap.org/img/wn/${icon}@2x.png`)
     }
     getWeather();
   }, []);
-  console.log(weather);
 
   return (
     // Tai maxWidth="xl"
     <Container maxWidth="lg">
+      
+      <img src={weatherIcon}/>
       <Grid container spacing={5}>
         {/* Otsikko teksti ylälaatikon päällä*/}
         <Grid item xs={12}>
@@ -27,8 +31,8 @@ function WeatherGrids() {
         </Grid>
 
         {/* Ylälaatikko */}
-        <Grid item xs={12}>
-          <Paper elevation={3} sx={sharedPaperStyle}>
+        <Grid item xs={12} >
+          <Paper elevation={3} sx={sharedPaperStyle} >
             {/* Lisää Laatikoita ylälaatikon sisällä */}
             <Grid container spacing={5}>
               <Grid item xs={6}>
@@ -43,7 +47,7 @@ function WeatherGrids() {
                 <Typography color="primary">Kuva tänne</Typography>
                 <Box
                   component="img"
-                  src="./src/images/cloudit.jpg"
+                  src=""
                   alt="Description"
                   sx={{ width: "20%", borderRadius: "80px" }}
                 />
