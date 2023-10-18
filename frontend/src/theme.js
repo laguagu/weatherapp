@@ -6,7 +6,7 @@ const blackMain = alpha(blackBase, 0.5);
 const theme = createTheme({
     palette:{
         primary:{
-            main:"#cccccc",
+            main:"#f5f5f5",
         },
         secondary: {
             main: '#f44336'

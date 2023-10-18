@@ -2,18 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap'); 
 
 body{
-  background-image: url("./images/cloudit.jpg");
+  /* background-image: url("./images/cloudit.jpg"); */
   background-size: 100% auto;
+  background: linear-gradient(135deg, #b3ccb3, #3b7e57);
   /* background-size: cover; */
-  background-repeat: no-repeat;
-  background-position: center;
+  /* background-repeat: no-repeat;
+  background-position: center; */
   /* background-color: #cccccc; */
   /* Note: Tee tauskakuva vaihtuvaksi sään mukaan */
 }
 
-.Paper{
-  padding: "100px"; height: 100; bgcolor:"black.main"; border:1.5; borderColor: "#9e9e9e";
-}
 
 .fullHeight {
   height: 100vh; /* 100% näytön korkeudesta */
