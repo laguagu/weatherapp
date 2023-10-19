@@ -1,7 +1,10 @@
-import { Button, Grid, Paper, Typography } from "@mui/material";
+import { Alert, Button, Grid, Paper, Typography } from "@mui/material";
 import { sharedPaperStyle } from "../theme";
 
 function UserDetails() {
+  let userLoggedIn = false;
+  console.log();
+
   return (
     <Grid item xs={6}>
       <Typography variant="h4" color="primary">
@@ -9,20 +12,47 @@ function UserDetails() {
       </Typography>
 
       <Paper elevation={3} sx={sharedPaperStyle}>
-        <Grid container spacing={5}>
-          <Grid item xs={6}>
-            <Typography color={"primary"}>Hei Matti</Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography color={"primary"}>Kaksi</Typography>
-          </Grid>
-          <Grid item xs={6}>
-          <Button variant="contained">Kolme</Button>
-          </Grid>
-          <Grid item xs={6}>
-            <Button variant="contained">Neljä</Button>
-          </Grid>
-        </Grid>
+        {userLoggedIn ? (
+          <>
+            <Typography color={"primary"} align="center" gutterBottom>
+              Hello Matti
+            </Typography>
+            <Grid container spacing={3}>
+              <Grid item xs={6}>
+                <Alert severity="info">Sinulta loppu rahat</Alert>
+              </Grid>
+
+              <Grid item xs={6}>
+                <Alert severity="info">Sinulta loppu rahat</Alert>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography color={"primary"} align="center" gutterBottom>
+                  <Button variant="contained">Logout</Button>
+                </Typography>
+              </Grid>
+            </Grid>
+          </>
+        ) : (
+          <>
+            <Typography color={"primary"} align="center" gutterBottom>
+              Hello Seppo
+            </Typography>
+            <Grid container spacing={3}>
+              <Grid item xs={6}>
+                <Alert severity="info">Sinulta loppu rahat</Alert>
+              </Grid>
+
+              <Grid item xs={6}>
+                <Alert severity="info">Sinulta loppu rahat</Alert>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography color={"primary"} align="center" gutterBottom>
+                  <Button variant="contained">Logout</Button>
+                </Typography>
+              </Grid>
+            </Grid>
+          </>
+        )}
       </Paper>
     </Grid>
   );
