@@ -2,18 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap'); 
 
 body{
-  /* background-image: url("./images/cloudit.jpg"); */
-  /* background-size: 100% auto; */
   background: linear-gradient(135deg, #b3ccb3, #3b7e57);
-  /* background-size: cover; */
-  /* background-repeat: no-repeat;
-  background-position: center; */
-  /* background-color: #cccccc; */
-  /* Note: Tee tauskakuva vaihtuvaksi sään mukaan */
 }
 
 html, body {
   height:100%;
-  margin: 0;
-  padding: 0;
 }

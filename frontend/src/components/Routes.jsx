@@ -1,4 +1,4 @@
-import { Button, Divider } from "@mui/material";
+import { Divider } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function Routes() {
