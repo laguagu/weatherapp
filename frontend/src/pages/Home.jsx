@@ -1,8 +1,14 @@
+import { Link } from "react-router-dom";
 import WeatherGrids from "../components/WeatherGrids";
-
+import { Button } from "@mui/material";
 function WeatherApp() {
   return (
-    <WeatherGrids/>
+    <>
+      <Button component={Link} to="test">
+        Routes
+      </Button>
+      <WeatherGrids />
+    </>
   );
 }
 

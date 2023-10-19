@@ -111,7 +111,6 @@ function WeatherGrids() {
                   <Typography color="primary" align="center">
                     Tuuli
                     <img src="./src/images/wind.png" />
-                    {/* <AirIcon fontSize="large"/> */}
                   </Typography>
                   <Divider />
                   <Typography color="primary" align="center">
