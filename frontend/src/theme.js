@@ -13,10 +13,24 @@ const theme = createTheme({
         },
         black:{
             main: blackMain
+        },
+        success: {
+            main: '#4CAF50',
         }
     },
     typography: {
         fontFamily: 'kanit, cursive',
+    },
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#123456',
+                    color: '#ffffff',
+                    // variant:"contained"
+                }
+            }
+        }
     }
 })
 

@@ -2,7 +2,7 @@ import { Container, Grid, Paper, Typography, Divider } from "@mui/material";
 import { sharedPaperStyle } from "../theme";
 import { useEffect, useState } from "react";
 import fetchWeather from "../api/fetchWeather";
-import AirIcon from "@mui/icons-material/Air";
+import UserDetails from "./userDetails";
 
 function WeatherGrids() {
   const [weatherCity, setWeatherCity] = useState("");
@@ -109,7 +109,7 @@ function WeatherGrids() {
               <Grid item xs={4}>
                 <Paper sx={{ bgcolor: "black.main" }} elevation={2}>
                   <Typography color="primary" align="center">
-                    Tuuli
+                    Wind
                     <img src="./src/images/wind.png" />
                   </Typography>
                   <Divider />
@@ -136,17 +136,7 @@ function WeatherGrids() {
         </Grid>
 
         {/* Oikea alalaatikko */}
-        <Grid item xs={6}>
-          <Typography variant="h4" color="primary">
-            Sää inffoa
-          </Typography>
-
-          <Paper elevation={3} sx={sharedPaperStyle}>
-            <Typography color="primary" align="center">
-              Oikean
-            </Typography>
-          </Paper>
-        </Grid>
+        <UserDetails />
       </Grid>
     </Container>
   );

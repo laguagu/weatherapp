@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@emotion/react";
 import Home from "./pages/Home";
-import Routes from "./components/Routes";
+import RouteTest from "./components/Routes";
 import theme from "./theme";
 import {
   createBrowserRouter,
@@ -17,7 +17,7 @@ function App() {
     },
     {
       path:"test",
-      element: <Routes/>
+      element: <RouteTest/>
     }
   ]);
 
