@@ -2,12 +2,12 @@ import { Alert, Button, Grid, Paper, Typography } from "@mui/material";
 import { sharedPaperStyle } from "../theme";
 import { Link } from "react-router-dom";
 function UserDetails() {
-  let userLoggedIn = false;
+  let userLoggedIn = true;
 
   return (
     <Grid item xs={6}>
       <Typography variant="h4" color="primary">
-        User details
+        Bank account
       </Typography>
 
       <Paper elevation={3} sx={sharedPaperStyle}>
@@ -18,11 +18,11 @@ function UserDetails() {
             </Typography>
             <Grid container spacing={3}>
               <Grid item xs={6}>
-                <Alert severity="info">Sinulta loppu rahat</Alert>
+                <Alert severity="info">Balance:</Alert>
               </Grid>
 
               <Grid item xs={6}>
-                <Alert severity="info">Sinulta loppu rahat</Alert>
+                <Alert severity="info">Loan:</Alert>
               </Grid>
               
               <Grid item xs={12}>
