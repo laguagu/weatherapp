@@ -8,6 +8,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import Login from "./pages/Login";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,6 +19,10 @@ function App() {
     {
       path:"test",
       element: <RouteTest/>
+    },
+    {
+      path:"login",
+      element: <Login/>
     }
   ]);
 

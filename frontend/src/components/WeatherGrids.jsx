@@ -43,7 +43,7 @@ function WeatherGrids() {
         {/* Otsikko teksti ylälaatikon päällä*/}
         <Grid item xs={12}>
           <Typography variant="h4" align="center" color="primary" gutterBottom>
-            Päivän Sää
+            Today weather
           </Typography>
         </Grid>
 
@@ -61,7 +61,7 @@ function WeatherGrids() {
                   variant="h5"
                   sx={{ marginTop: "15px" }}
                 >
-                  Lämpötila:
+                  Temperature
                   {weatherTemp.celsius > 0 ? " +" : " -"}
                   {weatherTemp.celsius + "°C"}
                   <Typography>
@@ -87,7 +87,7 @@ function WeatherGrids() {
         {/* Vasen alalaatikko */}
         <Grid item xs={6}>
           <Typography variant="h4" color="primary">
-            Sää tiedot
+            Weather info
           </Typography>
           <Paper elevation={3} sx={sharedPaperStyle}>
             {/* Container kolmelle pienelle laatikolle */}
