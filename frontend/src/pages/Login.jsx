@@ -11,7 +11,7 @@ function Login() {
     }
 
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="xs">
             <Typography variant="h4" gutterBottom>Sign in</Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, marginTop:"20px"}}>
                 <TextField 
