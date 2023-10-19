@@ -1,4 +1,4 @@
-import { Alert, Button, Grid, Paper, Typography } from "@mui/material";
+import { Alert, Avatar, Button, Grid, Paper, Typography } from "@mui/material";
 import { sharedPaperStyle } from "../theme";
 
 function UserDetails() {
@@ -24,6 +24,7 @@ function UserDetails() {
               <Grid item xs={6}>
                 <Alert severity="info">Sinulta loppu rahat</Alert>
               </Grid>
+              
               <Grid item xs={12}>
                 <Typography color={"primary"} align="center" gutterBottom>
                   <Button variant="contained">Logout</Button>
