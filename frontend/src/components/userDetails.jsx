@@ -1,6 +1,6 @@
-import { Alert, Avatar, Button, Grid, Paper, Typography } from "@mui/material";
+import { Alert, Button, Grid, Paper, Typography } from "@mui/material";
 import { sharedPaperStyle } from "../theme";
-
+import { Link } from "react-router-dom";
 function UserDetails() {
   let userLoggedIn = false;
 
@@ -44,7 +44,7 @@ function UserDetails() {
               justifyContent={"center"}
             >
               <Grid item>
-                <Button variant="contained">Log in</Button>
+                <Button variant="contained" component={Link} to="/login">Log in</Button>
               </Grid>
               <Grid item>
                 <Button variant="contained">Register</Button>
