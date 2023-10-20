@@ -62,7 +62,7 @@ function WeatherGrids() {
                   sx={{ marginTop: "15px" }}
                 >
                   Temperature
-                  {weatherTemp.celsius > 0 ? " +" : " -"}
+                  {weatherTemp.celsius > 0 ? " +" : " "}
                   {weatherTemp.celsius + "°C"}
                   <Typography>
                     Feels Like {weatherTemp.feels_like + "°C"}
