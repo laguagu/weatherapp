@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 function WeatherApp() {
   return (
     <>
-      <Button component={Link} to="test">
+      <Button component={Link} to="routes">
         Routes
       </Button>
       <WeatherGrids />
