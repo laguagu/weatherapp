@@ -8,6 +8,8 @@ export default function Routes() {
       <Link component={Link} to="/">HOME</Link>
       <Divider/>
       <Link component={Link} to="/login">LOGIN</Link>
+      <Divider/>
+      <Link component={Link} to="/register">REGISTER</Link>
     </>
   );
 }

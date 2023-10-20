@@ -22,7 +22,7 @@ function UserDetails() {
               </Grid>
 
               <Grid item xs={6}>
-                <Alert severity="info">Loan:</Alert>
+                <Alert severity="info">Debt:</Alert>
               </Grid>
               
               <Grid item xs={12}>
