@@ -1,8 +1,7 @@
 import Express from "express"
 import cors from "cors"
 import morgan from "morgan";
-import { getMessage } from "./controllers/userController.js";
-import { User } from "./models/UserEntity.js";
+import { getMessage } from "./controllers/userController";
 
 const PORT = process.env.PORT || 3000
 const app = Express();
