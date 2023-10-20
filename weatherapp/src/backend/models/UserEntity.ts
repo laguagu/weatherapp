@@ -1,20 +1,19 @@
-// import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-// @Entity()
-// export class User {
-//   @PrimaryGeneratedColumn()
-//   id;
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-//   @Column("text")
-//   username;
+  @Column("text")
+  username: string;
 
-//   @Column("text")
-//   password;
+  @Column("text")
+  password: string;
 
-//   @Column("double")
-//   balance;
+  @Column("double")
+  balance: number;
 
-//   @Column("double")
-//   depth;
-// }
-// Ö
+  @Column("double")
+  depth: number;
+}
