@@ -12,7 +12,7 @@ const getAllUsers = async (req: Request, res: Response) => {
   const response = await userRepository.find()
   console.log("All users", response);
   console.log(response);
-  return res.status(200).json({ Users: response });
+  return res.status(200).json({ users: response });
 };
 
 

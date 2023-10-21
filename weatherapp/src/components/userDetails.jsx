@@ -1,9 +1,20 @@
 import { Alert, Button, Grid, Paper, Typography } from "@mui/material";
 import { sharedPaperStyle } from "../theme";
 import { Link } from "react-router-dom";
-function UserDetails() {
-  let userLoggedIn = true;
+import { useEffect } from "react";
+import { fetchUser } from "../api/fetchUsers";
 
+function UserDetails() {
+  useEffect(() => {
+    async function getUser() {
+      const result = await fetchUser()
+      console.log(result.users)
+    }
+    getUser()
+  },[])
+  
+  
+  let userLoggedIn = true;
   return (
     <Grid item xs={6}>
       <Typography variant="h4" color="primary">
