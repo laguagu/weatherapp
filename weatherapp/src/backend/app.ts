@@ -4,7 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { AppDataSource } from "./database/connection";
 import userRoutes from "./routes/userRoutes";
-console.log(typeof userRoutes);
+import { saveUser } from "./database/connection";
 const PORT = process.env.PORT || 3000;
 const app = Express();
 
