@@ -19,8 +19,10 @@ newUser.password = "saku";
 newUser.balance = 500;
 newUser.depth = 100;
 
+export const userRepository = AppDataSource.getRepository(User)
+
 export async function saveUser() {
-  await AppDataSource.manager.save(newUser);
+  await userRepository.save(newUser)
   console.log("New user added");
 }
 

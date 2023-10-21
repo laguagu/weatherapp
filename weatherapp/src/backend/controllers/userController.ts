@@ -1,9 +1,19 @@
 // // Täällä määritellään mitä tapahtuu kun tietylle reitille tehdään HTTP pyyntö.
 // // Käsittelee pyynnön ja tuottaa vastauksen
 import { Request, Response } from 'express';
+import { userRepository } from '../database/connection';
+
 
 const getMessage = (req: Request, res: Response) => {
   return res.status(200).json({ message: "Toimii" });
 };
 
-export { getMessage };
+const getAllUsers = async (req: Request, res: Response) => {
+  const response = await userRepository.find()
+  console.log("All users", response);
+  console.log(response);
+  return res.status(200).json({ Users: response });
+};
+
+
+export { getMessage, getAllUsers};

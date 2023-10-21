@@ -2,9 +2,9 @@ import "reflect-metadata";
 import Express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { getMessage } from "./controllers/userController";
-import { AppDataSource, saveUser } from "./database/connection";
-
+import { AppDataSource } from "./database/connection";
+import userRoutes from "./routes/userRoutes";
+console.log(typeof userRoutes);
 const PORT = process.env.PORT || 3000;
 const app = Express();
 
@@ -14,7 +14,7 @@ app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms")
 );
 
-app.get("/", getMessage);
+app.use("/api/users",userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is runing on ${PORT}`);
@@ -24,6 +24,6 @@ app.listen(PORT, () => {
 AppDataSource.initialize()
   .then(() => {
     console.log("Connected to database");
-    saveUser()
+    // saveUser()
   })
-  .catch((error) => console.error(error));
+  .catch((error) => console.error("Unable to connect ",error));
