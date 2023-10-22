@@ -5,13 +5,17 @@ export const AppDataSource = new DataSource({
   type: "postgres",
   host: "localhost",
   port: 5432,
-  username: "postgres",
-  password: "admin",
-  database: "weatherapp",
+  username: "postgres", // 1. Tietokantasi käyttäjänimi
+  password: "admin", // 2. Tietokantasi salasana
+  database: "weatherapp", // 3. Tietokantasi nimi (Kohdat 1,2,3 pitää asettaa paikallisesti samalla tavalla)
   entities: [User],
   synchronize: true,
   logging: false,
 });
+
+
+
+const userRepository = AppDataSource.getRepository(User)
 
 const newUser = new User();
 newUser.username = "saku";
@@ -19,14 +23,8 @@ newUser.password = "saku";
 newUser.balance = 500;
 newUser.depth = 100;
 
-export const userRepository = AppDataSource.getRepository(User)
-
+// Lisää saveUser() App.ts tiedostoon initialize metodiin jos haluat käynnistäessä dataa tietokantaan
 export async function saveUser() {
   await userRepository.save(newUser)
   console.log("New user added");
-}
-
-export async function fetchAndPrintUser() {
-  const savedUser = await AppDataSource.manager.find(User);
-  console.log(savedUser);
 }

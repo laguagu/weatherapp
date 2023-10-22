@@ -8,7 +8,7 @@
     "outDir": "dist",
     "experimentalDecorators": true, // Sallitaan Decoration käyttö
     "emitDecoratorMetadata": true, // Tarvitaan Typeormiin
-    "strictPropertyInitialization": false,
+    // "strictPropertyInitialization": false,
   },
   "lib": ["ES6","es2017","es2022"],
 }
