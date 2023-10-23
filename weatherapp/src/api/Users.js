@@ -1,7 +1,7 @@
 import axios from "axios";
 const BASE_URL = "http://localhost:3000/api/users";
 
-async function fetchUser() {
+async function getUsers() {
   try {
     const response = await axios.get(BASE_URL);
     return response.data;
@@ -10,4 +10,4 @@ async function fetchUser() {
   }
 }
 
-export {fetchUser}
+export {getUsers}

@@ -2,15 +2,15 @@ import { Alert, Button, Grid, Paper, Typography } from "@mui/material";
 import { sharedPaperStyle } from "../theme";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { fetchUser } from "../api/fetchUsers";
+import { getUsers } from "../api/Users";
 
 function UserDetails() {
   useEffect(() => {
-    async function getUser() {
-      const result = await fetchUser()
+    async function findUser() {
+      const result = await getUsers()
       console.log(result.users)
     }
-    getUser()
+    findUser()
   },[])
   
   

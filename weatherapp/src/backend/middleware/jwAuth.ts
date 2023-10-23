@@ -18,3 +18,5 @@ function tokenAuthenticate(req,res,next) {
         res.status(401).send("Invalid token");
     }
 }
+
+export default tokenAuthenticate
