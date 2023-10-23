@@ -1,7 +1,7 @@
 import { Container, Grid, Paper, Typography, Divider } from "@mui/material";
 import { sharedPaperStyle } from "../theme";
 import { useEffect, useState } from "react";
-import fetchWeather from "../api/fetchWeather";
+import fetchWeather from "../api/weatherApi";
 import UserDetails from "./userDetails";
 
 function WeatherGrids() {
