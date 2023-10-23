@@ -6,7 +6,7 @@ import tokenAuthenticate from "../middleware/jwAuth";
 const router = Router()
 
 // Endpoints /api/users
-router.get("/", tokenAuthenticate, getAllUsers)
+router.get("/", getAllUsers)
 router.get("/viesti",getMessage)
 
 router.post("/", postNewUser)

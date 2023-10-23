@@ -1,12 +1,20 @@
 import { useState } from 'react';
 import { Box, TextField, Typography, Container, Button } from "@mui/material";
 import { Link } from 'react-router-dom';
+import { loginUser } from '../api/usersApi';
 
 function Login() {
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
 
     const handleLogin = () => {
+        const userDetails = {
+            username: username,
+            password: password
+        }
+        console.log(userDetails)
+        loginUser(userDetails)
+        
         console.log("Tallennettu palvelimelle")
     }
 
@@ -30,7 +38,8 @@ function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <Button variant="contained" color="primary" onClick={handleLogin} component={Link} to="/">
+                <Button variant="contained" color="primary" onClick={handleLogin} > 
+                {/* component={Link} to="/" */}
                     Sign in
                 </Button>
             </Box>
