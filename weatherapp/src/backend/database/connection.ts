@@ -21,7 +21,7 @@ const newUser = new User();
 newUser.username = "saku";
 newUser.password = "saku";
 newUser.balance = 500;
-newUser.depth = 100;
+newUser.debt = 100;
 
 // Lisää saveUser() App.ts tiedostoon initialize metodiin jos haluat käynnistäessä dataa tietokantaan
 export async function saveUser() {

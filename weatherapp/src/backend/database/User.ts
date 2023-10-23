@@ -16,5 +16,5 @@ export class User extends BaseEntity{
   balance: number;
 
   @Column()
-  depth: number;
+  debt: number;
 }
