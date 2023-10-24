@@ -7,17 +7,20 @@ import { getUser } from "../api/usersApi";
 function UserDetails() {
   const [balance, setBalance] = useState(0);
   const [debt, setDebt] = useState(0);
+  const [loggedIn, setloggedIn] = useState(false);
 
   useEffect(() => {
     async function findUser() {
       const result = await getUser();
-      setBalance(result.balance)
-      setDebt(result.debt)
+      if (result){
+        setBalance(result.balance)
+        setDebt(result.debt)
+        setloggedIn(true)
+      }
     }
     findUser();
   }, []);
 
-  let userLoggedIn = true;
   return (
     <Grid item xs={6}>
       <Typography variant="h4" color="primary">
@@ -25,7 +28,7 @@ function UserDetails() {
       </Typography>
 
       <Paper elevation={3} sx={sharedPaperStyle}>
-        {userLoggedIn ? (
+        {loggedIn ? (
           <>
             <Typography color={"primary"} align="center" gutterBottom>
               Hello Matti
