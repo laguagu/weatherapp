@@ -1,9 +1,16 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:3000/api/users";
+const token = localStorage.getItem("usertoken");
+
+const instance = axios.create({  
+  baseURL : "http://localhost:3000/api/users",
+  headers: {
+    "Authorization": `Bearer ${token}`
+  }
+})
 
 async function loginUser(userdetails) {
   try {
-    const response = await axios.post(`${BASE_URL}/login`, userdetails);
+    const response = await instance.post("/login",userdetails);
     const token = response.data.token;
 
     if (token) {
@@ -16,13 +23,15 @@ async function loginUser(userdetails) {
   }
 }
 
-async function getUsers() {
+async function getUser() {
   try {
-    const response = await axios.get(BASE_URL);
+    const response = await instance.get();
+    console.log(token)
+    
     return response.data;
   } catch (error) {
     console.error("Cant get userdetails: ", error);
   }
 }
 
-export { getUsers, loginUser };
+export { getUser, loginUser };

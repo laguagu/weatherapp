@@ -7,8 +7,14 @@ const jwt = require("jsonwebtoken");
 
 const userRepository = AppDataSource.getRepository(User);
 
-const getMessage = (req: Request, res: Response) => {
-  return res.status(200).json({ message: "Toimii" });
+const getUserById = async (req: Request, res: Response) => {
+  const userId = parseInt(req.params.id, 10);
+
+  const user = await userRepository.findOneBy({
+    id: userId,
+  });
+  
+  return res.status(200).json(user)
 };
 
 const getAllUsers = async (req: Request, res: Response) => {
@@ -66,4 +72,22 @@ const login = async (req: Request, res: Response) => {
   return res.json({ token });
 };
 
-export { getMessage, getAllUsers, postNewUser, deleteUser, updateUser, login };
+const getLoggedInUser = async (req: Request, res: Response) => {
+  if (req.user.id) {
+    // Now you can use user
+    const { user } = req;
+  }
+  const userId = req.user.id;
+
+  const user = await userRepository.findOneBy({
+    id: userId,
+  });
+  
+  if(!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  return res.status(200).json(user);
+};
+
+export { getAllUsers, postNewUser, deleteUser, updateUser, login, getUserById, getLoggedInUser };
