@@ -1,16 +1,16 @@
 import axios from "axios";
 const token = localStorage.getItem("usertoken");
 
-const instance = axios.create({  
-  baseURL : "http://localhost:3000/api/users",
+const instance = axios.create({
+  baseURL: "http://localhost:3000/api/users",
   headers: {
-    "Authorization": `Bearer ${token}`
-  }
-})
+    Authorization: `Bearer ${token}`,
+  },
+});
 
 async function loginUser(userdetails) {
   try {
-    const response = await instance.post("/login",userdetails);
+    const response = await instance.post("/login", userdetails);
     const token = response.data.token;
 
     if (token) {
@@ -25,9 +25,7 @@ async function loginUser(userdetails) {
 
 async function getUser() {
   try {
-    const response = await instance.get();
-    console.log(token)
-    
+    const response = await instance.get("/me");
     return response.data;
   } catch (error) {
     console.error("Cant get userdetails: ", error);

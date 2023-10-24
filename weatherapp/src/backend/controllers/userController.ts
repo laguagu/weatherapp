@@ -13,8 +13,8 @@ const getUserById = async (req: Request, res: Response) => {
   const user = await userRepository.findOneBy({
     id: userId,
   });
-  
-  return res.status(200).json(user)
+
+  return res.status(200).json(user);
 };
 
 const getAllUsers = async (req: Request, res: Response) => {
@@ -24,7 +24,7 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const postNewUser = async (req: Request, res: Response) => {
   const user = await userRepository.create(req.body);
-  userRepository.save(user)
+  userRepository.save(user);
   return res.json(user);
 };
 
@@ -46,48 +46,52 @@ async function updateUser(req: Request, res: Response) {
 }
 
 const login = async (req: Request, res: Response) => {
-  // Tarkisukset 
- 
+  // Tarkisukset
+
   const user = await userRepository.findOne({
     where: { username: req.body.username },
   });
-  
+
   if (!user) {
     return res.status(401).json({ error: "User not found" });
   }
-  
+
   const password = req.body.password;
   const passwordValid = user.password === password ? true : false;
-  
+
   if (!passwordValid) {
     return res.status(401).json({ error: "Invalid password" });
   }
-  
+
   // Generoidaan JWT
   const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
     expiresIn: "1h",
   });
   console.log(token);
-  
+
   return res.json({ token });
 };
 
 const getLoggedInUser = async (req: Request, res: Response) => {
-  if (req.user.id) {
-    // Now you can use user
-    const { user } = req;
-  }
   const userId = req.user.id;
 
   const user = await userRepository.findOneBy({
     id: userId,
   });
-  
-  if(!user) {
+
+  if (!user) {
     return res.status(404).json({ error: "User not found" });
   }
 
   return res.status(200).json(user);
 };
 
-export { getAllUsers, postNewUser, deleteUser, updateUser, login, getUserById, getLoggedInUser };
+export {
+  getAllUsers,
+  postNewUser,
+  deleteUser,
+  updateUser,
+  login,
+  getUserById,
+  getLoggedInUser,
+};
