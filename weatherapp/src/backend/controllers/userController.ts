@@ -41,10 +41,10 @@ async function updateUser(req: Request, res: Response) {
 
 const login = async (req: Request, res: Response) => {
   // Tarkisukset 
+ 
   const user = await userRepository.findOne({
     where: { username: req.body.username },
   });
-  console.log(user);
   
   if (!user) {
     return res.status(401).json({ error: "User not found" });
@@ -61,7 +61,8 @@ const login = async (req: Request, res: Response) => {
   const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, {
     expiresIn: "1h",
   });
-
+  console.log(token);
+  
   return res.json({ token });
 };
 

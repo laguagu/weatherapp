@@ -7,7 +7,7 @@ async function loginUser(userdetails) {
     const token = response.data.token;
 
     if (token) {
-      localStorage.setItem("token", token); // Tallennetaan token paikalliseen tallennustilaan
+      localStorage.setItem("usertoken", token); // Tallennetaan token paikalliseen tallennustilaan
       return { success: true };
     }
   } catch (error) {

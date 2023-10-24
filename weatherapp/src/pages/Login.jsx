@@ -1,21 +1,28 @@
 import { useState } from 'react';
 import { Box, TextField, Typography, Container, Button } from "@mui/material";
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { loginUser } from '../api/usersApi';
 
 function Login() {
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleLogin = () => {
+    const navigate = useNavigate();
+
+    const handleLogin = async () => {
         const userDetails = {
             username: username,
             password: password
         }
         console.log(userDetails)
-        loginUser(userDetails)
+        const logginResult = await loginUser(userDetails)
         
-        console.log("Tallennettu palvelimelle")
+        if (logginResult.success) {
+            console.log("Onnistui")
+            navigate("/");
+        } else {
+            console.error("Kirjautuminen epäonnistui", result.error);
+        }
     }
 
     return (
