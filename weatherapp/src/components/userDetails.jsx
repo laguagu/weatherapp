@@ -42,7 +42,6 @@ function UserDetails() {
               <Grid item xs={6}>
                 <Alert severity="info">
                   Balance: {balance}€
-                  <Button onClick={addMoney}>Loan +100€</Button>
                 </Alert>
               </Grid>
 
@@ -55,6 +54,7 @@ function UserDetails() {
               <Grid item xs={12}>
                 <Typography color={"primary"} align="center" gutterBottom>
                   <Button variant="contained">Logout</Button>
+                  <Button onClick={addMoney} sx={{marginLeft: 2}}>Loan +100€</Button>
                 </Typography>
               </Grid>
             </Grid>

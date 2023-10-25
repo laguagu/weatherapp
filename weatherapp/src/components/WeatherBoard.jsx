@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Container,
   Grid,
@@ -13,24 +14,24 @@ import { useEffect, useState } from "react";
 import fetchWeather from "../api/weatherApi";
 import UserDetails from "./userDetails";
 
-function SearchWeather() {
-  const [city, setCity] = useState("")
+function SearchWeather({setWeatherCity}) {
+  const [city, setCity] = useState("");
+
+  function onSubmit() {
+    setWeatherCity(city)
+  }
 
   return (
-    <Box
-      display="flex"
-      flexDirection="row"
-      alignItems="center"
-    >
+    <Box display="flex" flexDirection="row" alignItems="center">
       <TextField
         id="cityname"
-        autoComplete="address-level2" // Kaupungit
-        variant="standard"
+        autoComplete="address-level2" // Kaupungit autofill
+        variant="filled"
+        label="Enter the city"
         value={city}
-        onChange={e => setCity(e.target.value)}
+        onChange={(e) => setCity(e.target.value)}
       />
-      <Button variant="contained" color="primary" sx={{ marginLeft: 1 }}  >
-        {/* component={Link} to="/" */}
+      <Button variant="contained" color="primary" sx={{ marginLeft: 1 }} onClick={onSubmit} >
         Search
       </Button>
     </Box>
@@ -38,7 +39,7 @@ function SearchWeather() {
 }
 
 function WeatherGrids() {
-  const [weatherCity, setWeatherCity] = useState("");
+  const [weatherCity, setWeatherCity] = useState("Helsinki");
   const [weatherIcon, setWeatherIcon] = useState("");
   const [weatherTemp, setWeatherTemp] = useState({
     celsius: "",
@@ -48,11 +49,11 @@ function WeatherGrids() {
   const [weatherWind, setWeatherWind] = useState("");
   const [weatherhumidity, setWeatherhumidity] = useState("");
   const [weatherPressure, setWeatherPressure] = useState("");
-
   // Ugly but it works :)
   useEffect(() => {
     async function getWeather() {
-      const result = await fetchWeather("Helsinki");
+      try{
+      const result = await fetchWeather(weatherCity);
       const icon = result.weather[0].icon;
       const temp = result.main.temp;
       const city = result.name;
@@ -67,16 +68,20 @@ function WeatherGrids() {
       setWeatherWind(wind);
       setWeatherhumidity(humidity);
       setWeatherPressure(pressure);
+      } catch (error) {
+        console.error("Search error", error.message)
+        setWeatherCity("Not found")
+      }
     }
     getWeather();
-  }, []);
+  }, [weatherCity]);
   return (
     <Container maxWidth="lg">
       <Grid container spacing={5}>
         {/* Otsikko teksti ylälaatikon päällä*/}
         <Grid item xs={12}>
-          <Typography variant="h4" align="center" color="primary">
-            Today weather
+          <Typography variant="h3" align="center" color="primary">
+            Weather Search
           </Typography>
         </Grid>
 
@@ -86,12 +91,16 @@ function WeatherGrids() {
           container
           justifyContent="center"
           alignItems="center"
-          style={{ height: "150px" }}
+          style={{ height: "100px" }}
         >
-          <SearchWeather />
+          <SearchWeather setWeatherCity={setWeatherCity}/>
         </Grid>
+        
         {/* Ylälaatikko */}
         <Grid item xs={12}>
+        <Typography variant="h4" align="center" color="primary" gutterBottom>
+            Current weather
+          </Typography>
           <Paper elevation={3} sx={sharedPaperStyle}>
             {/* Lisää Laatikoita ylälaatikon sisällä */}
             <Grid container spacing={50}>
