@@ -1,8 +1,41 @@
-import { Container, Grid, Paper, Typography, Divider } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  Divider,
+  Box,
+  TextField,
+  Button,
+} from "@mui/material";
 import { sharedPaperStyle } from "../theme";
 import { useEffect, useState } from "react";
 import fetchWeather from "../api/weatherApi";
 import UserDetails from "./userDetails";
+
+function SearchWeather() {
+  const [city, setCity] = useState("")
+
+  return (
+    <Box
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+    >
+      <TextField
+        id="cityname"
+        autoComplete="address-level2" // Kaupungit
+        variant="standard"
+        value={city}
+        onChange={e => setCity(e.target.value)}
+      />
+      <Button variant="contained" color="primary" sx={{ marginLeft: 1 }}  >
+        {/* component={Link} to="/" */}
+        Search
+      </Button>
+    </Box>
+  );
+}
 
 function WeatherGrids() {
   const [weatherCity, setWeatherCity] = useState("");
@@ -16,6 +49,7 @@ function WeatherGrids() {
   const [weatherhumidity, setWeatherhumidity] = useState("");
   const [weatherPressure, setWeatherPressure] = useState("");
 
+  // Ugly but it works :)
   useEffect(() => {
     async function getWeather() {
       const result = await fetchWeather("Helsinki");
@@ -38,15 +72,24 @@ function WeatherGrids() {
   }, []);
   return (
     <Container maxWidth="lg">
-      <img src={weatherIcon} />
       <Grid container spacing={5}>
         {/* Otsikko teksti ylälaatikon päällä*/}
         <Grid item xs={12}>
-          <Typography variant="h4" align="center" color="primary" gutterBottom>
+          <Typography variant="h4" align="center" color="primary">
             Today weather
           </Typography>
         </Grid>
 
+        <Grid
+          item
+          xs={12}
+          container
+          justifyContent="center"
+          alignItems="center"
+          style={{ height: "150px" }}
+        >
+          <SearchWeather />
+        </Grid>
         {/* Ylälaatikko */}
         <Grid item xs={12}>
           <Paper elevation={3} sx={sharedPaperStyle}>
