@@ -2,6 +2,7 @@
 ### Features
 
 - OpenWeatherMap provides API for fetching daily weather
+- Search bar for searching weather by city name
 - User details with unique user JSON Web Tokens 
 ## Tech Stack
 
