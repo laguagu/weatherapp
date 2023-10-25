@@ -12,15 +12,20 @@ function UserDetails() {
   useEffect(() => {
     async function findUser() {
       const result = await getUser();
-      if (result){
-        setBalance(result.balance)
-        setDebt(result.debt)
-        setloggedIn(true)
+      if (result) {
+        setBalance(result.balance);
+        setDebt(result.debt);
+        setloggedIn(true);
       }
     }
     findUser();
   }, []);
 
+  function addMoney() {
+    setBalance((thisBalance) => thisBalance + 100);
+    setDebt((thisdebt) => thisdebt + 100);
+  }
+  
   return (
     <Grid item xs={6}>
       <Typography variant="h4" color="primary">
@@ -35,11 +40,16 @@ function UserDetails() {
             </Typography>
             <Grid container spacing={3}>
               <Grid item xs={6}>
-                <Alert severity="info">Balance: {balance}</Alert>
+                <Alert severity="info">
+                  Balance: {balance}€
+                  <Button onClick={addMoney}>Loan +100€</Button>
+                </Alert>
               </Grid>
 
               <Grid item xs={6}>
-                <Alert severity="info">Debt: {debt}</Alert>
+                <Alert severity="info">
+                  Debt: {debt}€
+                </Alert>
               </Grid>
 
               <Grid item xs={12}>
