@@ -27,6 +27,6 @@ app.listen(PORT, () => {
 AppDataSource.initialize()
   .then(() => {
     console.log("Connected to database");
-    // saveUser()
+    // saveUser() Poista tämä kommentti jos haluat luoda vakio käyttäjän käynnistyksen yhteydessä tietokantaan
   })
   .catch((error) => console.error("Unable to connect ",error));
