@@ -15,7 +15,7 @@ function tokenAuthenticate(req,res,next) {
         req.user = decoded
         next();
     } catch (error) {
-        res.status(401).send("Invalid token");
+        res.status(401).send("Invalid JWT token");
     }
 }
 
