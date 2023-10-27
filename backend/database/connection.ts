@@ -5,9 +5,9 @@ export const AppDataSource = new DataSource({
   type: "postgres",
   host: process.env.DB_HOST || "localhost",
   port: 5432,
-  username: "postgres", // 1. Tietokantasi käyttäjänimi
-  password: "admin", // 2. Tietokantasi salasana
-  database: "weatherapp", // 3. Tietokantasi nimi (Kohdat 1,2,3 pitää asettaa paikallisesti samalla tavalla)
+  username: process.env.DB_USERNAME || "postgres",
+  password: process.env.DB_PASSWORD || "admin",
+  database: process.env.DB_NAME || "weatherapp",
   entities: [User],
   synchronize: true,
   logging: false,

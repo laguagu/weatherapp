@@ -1,0 +1,13 @@
+Mene bash kontissa 
+docker exec -it backend-database-1 bash
+
+Mene tietokantaan 
+psql -U postgres weatherapp
+
+Hae käyttäjät
+SELECT * FROM app_users;
+
+Poistu psql ympäristöstä
+\q
+ja kontista
+exit
