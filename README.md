@@ -9,3 +9,9 @@
 **Client:** React, Axios, React-router, MUI
 
 **Server:** Node, Express, Dotenv, JWT, TypeORM, Cors, Morgan, TypeScript
+
+**Containerization:**
+- Docker (used for the backend with the database)
+  
+**Database:**
+- PostgreSQL
