@@ -1,3 +1,6 @@
+Käynnistä palvelu ja rakenna imaget uudelleen
+docker-compose up --build
+
 Mene bash kontissa 
 docker exec -it backend-database-1 bash
 
@@ -11,3 +14,24 @@ Poistu psql ympäristöstä
 \q
 ja kontista
 exit
+
+Imagen luonti Dokcefilestä
+docker build -t weatherapp/backend .
+
+kontin käynnistys
+docker run -p 3001:3000 --name frontend-container frontend-image
+
+Listaa kaikki käynnissä olevat kontit:
+docker ps
+
+Pysäytä kontti (oletetaan, että frontend-container on kontin nimi):
+docker stop frontend-container
+
+Pysäytä ja poista kontti kun et tarvitse sitä
+docker compose down
+
+Poista kontti:
+docker rm frontend-container
+
+Poista image
+docker rmi [IMAGE_ID]
