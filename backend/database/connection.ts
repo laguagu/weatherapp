@@ -3,7 +3,7 @@ import { User } from "../database/User";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "localhost",
+  host: process.env.DB_HOST || "localhost",
   port: 5432,
   username: "postgres", // 1. Tietokantasi käyttäjänimi
   password: "admin", // 2. Tietokantasi salasana
