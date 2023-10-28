@@ -13,6 +13,9 @@ import { sharedPaperStyle } from "../theme";
 import { useEffect, useState } from "react";
 import fetchWeather from "../api/weatherApi";
 import UserDetails from "./userDetails";
+import humidyImage from "../images/hum.png"
+import windImage from "../images/wind.png"
+import pressureImage from "../images/press.png"
 
 function SearchWeather({setWeatherCity}) {
   const [city, setCity] = useState("");
@@ -149,7 +152,7 @@ function WeatherGrids() {
                 <Paper sx={{ bgcolor: "black.main" }} elevation={2}>
                   <Typography color="primary" align="center">
                     Humidity
-                    <img src="./src/images/dry.png" />
+                    <img src={humidyImage} />
                   </Typography>
                   <Divider />
                   <Typography color="primary" align="center">
@@ -162,7 +165,7 @@ function WeatherGrids() {
                 <Paper sx={{ bgcolor: "black.main" }} elevation={2}>
                   <Typography color="primary" align="center">
                     Wind
-                    <img src="./src/images/wind.png" />
+                    <img src={windImage} />
                   </Typography>
                   <Divider />
                   <Typography color="primary" align="center">
@@ -175,7 +178,7 @@ function WeatherGrids() {
                 <Paper sx={{ bgcolor: "black.main" }} elevation={2}>
                   <Typography color="primary" align="center">
                     Pressure
-                    <img src="./src/images/press.png" />
+                    <img src={pressureImage} />
                   </Typography>
                   <Divider />
                   <Typography color="primary" align="center">
