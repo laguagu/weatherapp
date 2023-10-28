@@ -15,3 +15,6 @@
   
 **Database:**
 - PostgreSQL
+
+**AWS S3:**
+- Frontend code published on [AWS S3 bucket](http://weatherapp-laguagu.s3-website.eu-north-1.amazonaws.com/).
