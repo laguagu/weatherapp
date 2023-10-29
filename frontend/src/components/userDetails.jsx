@@ -76,7 +76,7 @@ function UserDetails() {
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="contained">Register</Button>
+                <Button variant="contained" component={Link} to="/register">Register</Button>
               </Grid>
             </Grid>
           </>

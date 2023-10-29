@@ -1,5 +1,8 @@
 Käynnistä palvelu ja rakenna imaget uudelleen
-docker-compose up --build
+docker compose up --build
+
+Luo pelkät imaget docker-compose tiedostosta
+docker compose build
 
 Mene bash kontissa 
 docker exec -it backend-database-1 bash
