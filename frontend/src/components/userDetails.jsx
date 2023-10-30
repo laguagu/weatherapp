@@ -13,25 +13,26 @@ function UserDetails() {
 
   useEffect(() => {
     async function findUser() {
+      console.log("loggedIn muuttui: ", loggedIn);
       const result = await getUser();
-      console.log(result)
+      
       if (result) {
         setBalance(result.balance);
         setDebt(result.debt);
-        setUserName(result.username)
+        setUserName(result.username);
       }
     }
     findUser();
-  }, []);
+  }, [loggedIn]);
 
   function addMoney() {
     setBalance((thisBalance) => thisBalance + 100);
     setDebt((thisdebt) => thisdebt + 100);
   }
-  
+
   function logOut() {
-    localStorage.removeItem("usertoken")
-    setLoggedIn(false)
+    localStorage.removeItem("usertoken");
+    setLoggedIn(false);
   }
 
   return (
@@ -48,21 +49,21 @@ function UserDetails() {
             </Typography>
             <Grid container spacing={3}>
               <Grid item xs={6}>
-                <Alert severity="info">
-                  Balance: {balance}€
-                </Alert>
+                <Alert severity="info">Balance: {balance}€</Alert>
               </Grid>
 
               <Grid item xs={6}>
-                <Alert severity="info">
-                  Debt: {debt}€
-                </Alert>
+                <Alert severity="info">Debt: {debt}€</Alert>
               </Grid>
 
               <Grid item xs={12}>
                 <Typography color={"primary"} align="center" gutterBottom>
-                  <Button variant="contained" onClick={logOut}>Logout</Button>
-                  <Button onClick={addMoney} sx={{marginLeft: 2}}>Loan +100€</Button>
+                  <Button variant="contained" onClick={logOut}>
+                    Logout
+                  </Button>
+                  <Button onClick={addMoney} sx={{ marginLeft: 2 }}>
+                    Loan +100€
+                  </Button>
                 </Typography>
               </Grid>
             </Grid>
@@ -84,7 +85,9 @@ function UserDetails() {
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="contained" component={Link} to="/register">Register</Button>
+                <Button variant="contained" component={Link} to="/register">
+                  Register
+                </Button>
               </Grid>
             </Grid>
           </>

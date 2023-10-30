@@ -12,16 +12,16 @@ import {
 import { sharedPaperStyle } from "../theme";
 import { useEffect, useState } from "react";
 import fetchWeather from "../api/weatherApi";
-import UserDetails from "./userDetails";
-import humidyImage from "../images/hum.png"
-import windImage from "../images/wind.png"
-import pressureImage from "../images/press.png"
+import UserDetails from "./userDetails.jsx";
+import humidyImage from "../images/hum.png";
+import windImage from "../images/wind.png";
+import pressureImage from "../images/press.png";
 
-function SearchWeather({setWeatherCity}) {
+function SearchWeather({ setWeatherCity }) {
   const [city, setCity] = useState("");
 
   function onSubmit() {
-    setWeatherCity(city)
+    setWeatherCity(city);
   }
 
   return (
@@ -34,7 +34,12 @@ function SearchWeather({setWeatherCity}) {
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
-      <Button variant="contained" color="primary" sx={{ marginLeft: 1 }} onClick={onSubmit} >
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{ marginLeft: 1 }}
+        onClick={onSubmit}
+      >
         Search
       </Button>
     </Box>
@@ -55,25 +60,25 @@ function WeatherGrids() {
   // Ugly but it works :)
   useEffect(() => {
     async function getWeather() {
-      try{
-      const result = await fetchWeather(weatherCity);
-      const icon = result.weather[0].icon;
-      const temp = result.main.temp;
-      const city = result.name;
-      const info = result.weather[0].main;
-      const wind = result.wind.speed;
-      const humidity = result.main.humidity;
-      const pressure = result.main.pressure;
-      setWeatherCity(city);
-      setWeatherIcon(`https://openweathermap.org/img/wn/${icon}@2x.png`);
-      setWeatherTemp({ celsius: temp, feels_like: result.main.feels_like });
-      setWeatherInfo(info);
-      setWeatherWind(wind);
-      setWeatherhumidity(humidity);
-      setWeatherPressure(pressure);
+      try {
+        const result = await fetchWeather(weatherCity);
+        const icon = result.weather[0].icon;
+        const temp = result.main.temp;
+        const city = result.name;
+        const info = result.weather[0].main;
+        const wind = result.wind.speed;
+        const humidity = result.main.humidity;
+        const pressure = result.main.pressure;
+        setWeatherCity(city);
+        setWeatherIcon(`https://openweathermap.org/img/wn/${icon}@2x.png`);
+        setWeatherTemp({ celsius: temp, feels_like: result.main.feels_like });
+        setWeatherInfo(info);
+        setWeatherWind(wind);
+        setWeatherhumidity(humidity);
+        setWeatherPressure(pressure);
       } catch (error) {
-        console.error("Search error", error.message)
-        setWeatherCity("Not found")
+        console.error("Search error", error.message);
+        setWeatherCity("Not found");
       }
     }
     getWeather();
@@ -96,12 +101,12 @@ function WeatherGrids() {
           alignItems="center"
           style={{ height: "100px" }}
         >
-          <SearchWeather setWeatherCity={setWeatherCity}/>
+          <SearchWeather setWeatherCity={setWeatherCity} />
         </Grid>
-        
+
         {/* Ylälaatikko */}
         <Grid item xs={12}>
-        <Typography variant="h4" align="center" color="primary" gutterBottom>
+          <Typography variant="h4" align="center" color="primary" gutterBottom>
             Current weather
           </Typography>
           <Paper elevation={3} sx={sharedPaperStyle}>

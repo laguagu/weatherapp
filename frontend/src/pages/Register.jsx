@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Box, TextField, Typography, Container, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { addNewUser } from "../api/usersApi";
+import ErrorMessage from "../components/ErrorMessage";
 
 function Register() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [balance, setBalance] = useState(0);
   const [debt, setDebt] = useState(0);
-
 
   const handleRegister = async () => {
     const userDetails = {
@@ -17,12 +17,16 @@ function Register() {
       balance,
       debt
     }
-    const response = await addNewUser(userDetails)
-    console.log(response)
+    try{
+      const response = await addNewUser(userDetails)
+    } catch(error) {
+      console.log("VASTAUS",response)
+    }
   };
 
   return (
     <Container maxWidth="xs">
+      <ErrorMessage/>
       <Typography variant="h4" gutterBottom align="center">
         Register
       </Typography>
@@ -68,8 +72,6 @@ function Register() {
           variant="contained"
           color="primary"
           onClick={handleRegister}
-          component={Link}
-          to="/login"
         >
           Register
         </Button>

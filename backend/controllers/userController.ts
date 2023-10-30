@@ -22,12 +22,18 @@ const getAllUsers = async (req: Request, res: Response) => {
   return res.status(200).json({ users: response });
 };
 
-const postNewUser = async (req: Request, res: Response) => {
+const registerUser = async (req: Request, res: Response) => {
+  const {username, password} = req.body
+  const existingUser = await userRepository.findOne({
+    where: { username: username },
+  });
+  if (existingUser) {
+    return res.status(400).json({ error: "Username already exists" });
+  }
   console.log(req.body);
   const user = await userRepository.create(req.body);
-  console.log(user);
   userRepository.save(user);
-  return res.json(user);
+  return res.status(201).json(user);
 };
 
 const deleteUser = async (req: Request, res: Response) => {
@@ -90,7 +96,7 @@ const getLoggedInUser = async (req: Request, res: Response) => {
 
 export {
   getAllUsers,
-  postNewUser,
+  registerUser,
   deleteUser,
   updateUser,
   login,

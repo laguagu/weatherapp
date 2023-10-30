@@ -1,6 +1,6 @@
 // Sisältää api reitit käyttäjien hallintaan
 import { Router } from "express";
-import { getAllUsers, postNewUser, updateUser, deleteUser, login, getUserById, getLoggedInUser   } from "../controllers/userController";
+import { getAllUsers, registerUser, updateUser, deleteUser, login, getUserById, getLoggedInUser   } from "../controllers/userController";
 import tokenAuthenticate from "../middleware/jwAuth";
 
 const router = Router()
@@ -10,7 +10,7 @@ router.get("/", getAllUsers)
 router.get("/me", tokenAuthenticate, getLoggedInUser )
 router.get("/:id",tokenAuthenticate, getUserById)
 
-router.post("/", postNewUser)
+router.post("/", registerUser)
 router.post("/login", login)
 
 router.put("/:id", updateUser)
