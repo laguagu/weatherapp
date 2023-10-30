@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Box, TextField, Typography, Container, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { addNewUser } from "../api/usersApi";
-import ErrorMessage from "../components/ErrorMessage";
 
 function Register() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [balance, setBalance] = useState(0);
   const [debt, setDebt] = useState(0);
+  const [error, setErrorMessage] = useState("")
 
   const handleRegister = async () => {
     const userDetails = {
@@ -19,15 +19,19 @@ function Register() {
     }
     try{
       const response = await addNewUser(userDetails)
-    } catch(error) {
-      console.log("VASTAUS",response)
+    } catch (error) {
+      const errorMessage = error.response?.data?.error || "Unknown error";
+      setErrorMessage(errorMessage);
+      console.error("Cant register user:", error);
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 4000);
     }
   };
 
   return (
     <Container maxWidth="xs">
-      <ErrorMessage/>
-      <Typography variant="h4" gutterBottom align="center">
+      <Typography variant="h3" gutterBottom align="center">
         Register
       </Typography>
       <Box
@@ -75,6 +79,7 @@ function Register() {
         >
           Register
         </Button>
+        {error && <Typography color="error">{error}</Typography>}
       </Box>
     </Container>
   );
