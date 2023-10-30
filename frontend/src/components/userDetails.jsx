@@ -8,14 +8,17 @@ function UserDetails() {
   const [balance, setBalance] = useState(0);
   const [debt, setDebt] = useState(0);
   const [loggedIn, setloggedIn] = useState(false);
+  const [username, setUserName] = useState("");
 
   useEffect(() => {
     async function findUser() {
       const result = await getUser();
+      console.log(result)
       if (result) {
         setBalance(result.balance);
         setDebt(result.debt);
         setloggedIn(true);
+        setUserName(result.username)
       }
     }
     findUser();
@@ -36,7 +39,7 @@ function UserDetails() {
         {loggedIn ? (
           <>
             <Typography color={"primary"} align="center" gutterBottom>
-              Hello Matti
+              Hello {username}
             </Typography>
             <Grid container spacing={3}>
               <Grid item xs={6}>

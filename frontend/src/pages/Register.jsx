@@ -68,8 +68,8 @@ function Register() {
           variant="contained"
           color="primary"
           onClick={handleRegister}
-          // component={Link}
-          // to="/login"
+          component={Link}
+          to="/login"
         >
           Register
         </Button>
