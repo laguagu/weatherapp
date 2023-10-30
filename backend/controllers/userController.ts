@@ -23,12 +23,14 @@ const getAllUsers = async (req: Request, res: Response) => {
 };
 
 const postNewUser = async (req: Request, res: Response) => {
-  const username = req.body.userDetails.username
-  console.log(username);
+  // const userDetails = req.body.userDetails
+  // console.log(userDetails.username);
   // const user = await userRepository.create(req.body);
   // userRepository.save(user);
   // return res.json(user);
-  return res.json({käyttäjä: username})
+  console.log("HELLO");
+  
+  return res.json({käyttäjä: "userDetails.username"})
 };
 
 const deleteUser = async (req: Request, res: Response) => {
