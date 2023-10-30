@@ -35,7 +35,7 @@ async function getUser() {
 async function addNewUser(userDetails) {
   try{
     const response = await instance.post("/",userDetails);
-    return response
+    return { success: true };
   } catch (error) {
     console.error("Cant register user: ", error.response.data)
     throw error;

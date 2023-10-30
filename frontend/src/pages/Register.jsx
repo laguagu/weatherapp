@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, TextField, Typography, Container, Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { addNewUser } from "../api/usersApi";
 
 function Register() {
@@ -8,17 +8,21 @@ function Register() {
   const [password, setPassword] = useState("");
   const [balance, setBalance] = useState(0);
   const [debt, setDebt] = useState(0);
-  const [error, setErrorMessage] = useState("")
+  const [error, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     const userDetails = {
       username,
       password,
       balance,
-      debt
-    }
-    try{
-      const response = await addNewUser(userDetails)
+      debt,
+    };
+    try {
+      const response = await addNewUser(userDetails);
+      if (response.success) {
+        navigate("/login")
+      }
     } catch (error) {
       const errorMessage = error.response?.data?.error || "Unknown error";
       setErrorMessage(errorMessage);
@@ -72,11 +76,7 @@ function Register() {
           value={debt}
           onChange={(e) => setDebt(e.target.value)}
         />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleRegister}
-        >
+        <Button variant="contained" color="primary" onClick={handleRegister}>
           Register
         </Button>
         {error && <Typography color="error">{error}</Typography>}
