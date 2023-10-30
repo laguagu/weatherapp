@@ -32,4 +32,13 @@ async function getUser() {
   }
 }
 
-export { getUser, loginUser };
+async function addNewUser() {
+  try{
+    const response = await instance.post("/");
+    return response.data;
+  } catch (error) {
+    console.error("Cant register user: ", error)
+  }
+}
+
+export { getUser, loginUser, addNewUser };

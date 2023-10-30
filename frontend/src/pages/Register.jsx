@@ -1,12 +1,22 @@
 import { useState } from "react";
 import { Box, TextField, Typography, Container, Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { addNewUser } from "../api/usersApi";
 
 function Register() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [balance, setBalance] = useState(0);
+  const [debt, setDebt] = useState(0);
 
-  const handleRegister = () => {
+
+  const handleRegister = async () => {
+    const userDetails = {
+      username,
+      password
+    }
+    const response = await addNewUser(userDetails)
+    console.log(response)
     console.log("Tallennettu palvelimelle");
   };
 
@@ -43,22 +53,22 @@ function Register() {
           id="username"
           label="Balance"
           variant="outlined"
-          value={username}
-          onChange={(e) => setUserName(e.target.value)}
+          value={balance}
+          onChange={(e) => setBalance(e.target.value)}
         />
         <TextField
           id="username"
           label="Debt"
           variant="outlined"
-          value={username}
-          onChange={(e) => setUserName(e.target.value)}
+          value={debt}
+          onChange={(e) => setDebt(e.target.value)}
         />
         <Button
           variant="contained"
           color="primary"
           onClick={handleRegister}
-          component={Link}
-          to="/login"
+          // component={Link}
+          // to="/login"
         >
           Register
         </Button>
