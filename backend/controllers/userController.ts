@@ -28,8 +28,6 @@ const postNewUser = async (req: Request, res: Response) => {
   // const user = await userRepository.create(req.body);
   // userRepository.save(user);
   // return res.json(user);
-  console.log("HELLO");
-  
   return res.json({käyttäjä: "userDetails.username"})
 };
 
@@ -77,8 +75,13 @@ const login = async (req: Request, res: Response) => {
   return res.json({ token });
 };
 
+interface MyUser {
+  id: string;
+  // ... muut määritellyt kentät
+}
+
 const getLoggedInUser = async (req: Request, res: Response) => {
-  const userId = req.user.id;
+  const userId = (req as any).user.id;
 
   const user = await userRepository.findOneBy({
     id: userId,
