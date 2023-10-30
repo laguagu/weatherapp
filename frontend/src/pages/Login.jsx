@@ -5,7 +5,7 @@ import { loginUser } from "../api/usersApi";
 import { UserContext } from "../context/UserContext";
 
 function Login() {
-  const { loggedIn, setLoggedIn } = useContext(UserContext);
+  const [loggedIn, setLoggedIn] = useContext(UserContext);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -21,25 +21,21 @@ function Login() {
 
     if (logginResult.success) {
       console.log("Onnistui");
+      setLoggedIn(true);
       navigate("/");
     } else {
       setError("Wrong username or password");
       setTimeout(() => {
-        setError("")
+        setError("");
       }, 4000);
     }
   };
 
-  function button() {
-    setLoggedIn(true)
-    console.log(loggedIn)
-  }
   return (
     <Container maxWidth="xs">
       <Typography variant="h4" gutterBottom align="center">
         Sign in
       </Typography>
-    <Button onClick={button}>asd</Button>
       <Box
         sx={{
           display: "flex",

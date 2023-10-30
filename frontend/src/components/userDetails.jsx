@@ -1,14 +1,15 @@
 import { Alert, Button, Grid, Paper, Typography } from "@mui/material";
 import { sharedPaperStyle } from "../theme";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getUser } from "../api/usersApi";
+import { UserContext } from "../context/UserContext";
 
 function UserDetails() {
   const [balance, setBalance] = useState(0);
   const [debt, setDebt] = useState(0);
-  const [loggedIn, setloggedIn] = useState(false);
   const [username, setUserName] = useState("");
+  const [loggedIn, setLoggedIn] = useContext(UserContext);
 
   useEffect(() => {
     async function findUser() {
@@ -17,12 +18,11 @@ function UserDetails() {
       if (result) {
         setBalance(result.balance);
         setDebt(result.debt);
-        setloggedIn(true);
         setUserName(result.username)
       }
     }
     findUser();
-  }, [username]);
+  }, []);
 
   function addMoney() {
     setBalance((thisBalance) => thisBalance + 100);
@@ -31,7 +31,7 @@ function UserDetails() {
   
   function logOut() {
     localStorage.removeItem("usertoken")
-    setloggedIn(false)
+    setLoggedIn(false)
   }
 
   return (
