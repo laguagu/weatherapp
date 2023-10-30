@@ -32,9 +32,10 @@ async function getUser() {
   }
 }
 
-async function addNewUser() {
+async function addNewUser(userDetails) {
+  console.log('käyttäjän tiedot',userDetails)
   try{
-    const response = await instance.post("/");
+    const response = await instance.post("/",userDetails);
     return response.data;
   } catch (error) {
     console.error("Cant register user: ", error)

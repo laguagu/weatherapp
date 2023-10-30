@@ -13,11 +13,12 @@ function Register() {
   const handleRegister = async () => {
     const userDetails = {
       username,
-      password
+      password,
+      balance,
+      debt
     }
     const response = await addNewUser(userDetails)
     console.log(response)
-    console.log("Tallennettu palvelimelle");
   };
 
   return (

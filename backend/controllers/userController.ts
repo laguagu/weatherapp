@@ -3,8 +3,8 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../database/connection";
 import { User } from "../database/User";
-const jwt = require("jsonwebtoken");
 
+const jwt = require("jsonwebtoken");
 const userRepository = AppDataSource.getRepository(User);
 
 const getUserById = async (req: Request, res: Response) => {
@@ -23,12 +23,11 @@ const getAllUsers = async (req: Request, res: Response) => {
 };
 
 const postNewUser = async (req: Request, res: Response) => {
-  // const userDetails = req.body.userDetails
-  // console.log(userDetails.username);
-  // const user = await userRepository.create(req.body);
-  // userRepository.save(user);
-  // return res.json(user);
-  return res.json({käyttäjä: "userDetails.username"})
+  console.log(req.body);
+  const user = await userRepository.create(req.body);
+  console.log(user);
+  userRepository.save(user);
+  return res.json(user);
 };
 
 const deleteUser = async (req: Request, res: Response) => {
@@ -74,11 +73,6 @@ const login = async (req: Request, res: Response) => {
 
   return res.json({ token });
 };
-
-interface MyUser {
-  id: string;
-  // ... muut määritellyt kentät
-}
 
 const getLoggedInUser = async (req: Request, res: Response) => {
   const userId = (req as any).user.id;
