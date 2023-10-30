@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Box, TextField, Typography, Container, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/usersApi";
+import { UserContext } from "../context/UserContext";
 
 function Login() {
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,12 +30,16 @@ function Login() {
     }
   };
 
+  function button() {
+    setLoggedIn(true)
+    console.log(loggedIn)
+  }
   return (
     <Container maxWidth="xs">
       <Typography variant="h4" gutterBottom align="center">
         Sign in
       </Typography>
-
+    <Button onClick={button}>asd</Button>
       <Box
         sx={{
           display: "flex",

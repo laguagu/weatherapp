@@ -22,13 +22,18 @@ function UserDetails() {
       }
     }
     findUser();
-  }, []);
+  }, [username]);
 
   function addMoney() {
     setBalance((thisBalance) => thisBalance + 100);
     setDebt((thisdebt) => thisdebt + 100);
   }
   
+  function logOut() {
+    localStorage.removeItem("usertoken")
+    setloggedIn(false)
+  }
+
   return (
     <Grid item xs={6}>
       <Typography variant="h4" color="primary">
@@ -56,7 +61,7 @@ function UserDetails() {
 
               <Grid item xs={12}>
                 <Typography color={"primary"} align="center" gutterBottom>
-                  <Button variant="contained">Logout</Button>
+                  <Button variant="contained" onClick={logOut}>Logout</Button>
                   <Button onClick={addMoney} sx={{marginLeft: 2}}>Loan +100€</Button>
                 </Typography>
               </Grid>

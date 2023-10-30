@@ -5,12 +5,17 @@ import theme from "./theme";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: (
+        <UserProvider>
+          <Home />
+        </UserProvider>
+      ),
     },
     {
       path: "routes",
@@ -18,7 +23,11 @@ function App() {
     },
     {
       path: "login",
-      element: <Login />,
+      element: (
+        <UserProvider>
+          <Login />
+        </UserProvider>
+      ),
     },
     {
       path: "register",
@@ -29,7 +38,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <RouterProvider router={router}>
-        <Home />
       </RouterProvider>
     </ThemeProvider>
   );
